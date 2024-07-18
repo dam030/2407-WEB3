@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        h1 {
+            margin: 0;
+        }
+
+        .gugudan-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .dan-container {
+            width: 80px;
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            border: 1px solid #222;
+        }
+
+        .dan-container > h2 {
+            margin: 0;
+        }
+
+        .dan-container > p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        document.write(`<h1>`)
+            document.write(`구구단`)
+        document.write(`</h1>`)
+        document.write(`<div class="gugudan-container">`)
+            for(let i = 2; i <= 9; i++) {
+                document.write(`<div class="dan-container">`)
+                document.write(`<h2>`)
+                    document.write(`${i}단`)
+                document.write(`</h2>`)
+                for(let j = 1; j <= 9; j++) {
+                    document.write(`<p>`)
+                    document.write(`${i} x ${j} = ${i*j}`)
+                    document.write(`</p>`)
+                    // document.write(`<p>${i} x ${j} = ${i*j}</p>`)
+                }
+                document.write(`</div>`)
+            }            
+        document.write(`</div>`)
+    </script>
+</body>
+</html>
