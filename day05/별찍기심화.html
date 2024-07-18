@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 모래시계모양 만들기
+
+        const line = 5;
+
+        for(i = 0; i < line; i++) {
+            for(j = 0; j < Math.abs(2-i); j++) {
+                document.write(`○`)
+            }
+            for(let j = 0; j < line; j++) {
+                document.write('●')
+            }
+            document.write('<br>')
+        }
+
+    </script>
+</body>
+</html>
