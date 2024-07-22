@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수</title>
+</head>
+<body>
+    <script>
+
+
+        function star(){
+            document.write('&nbsp;*$nbsp;')
+        }
+
+        // 함수는 매개변수와 리턴을 선택적으로 사용할수있다
+        // 매개변수가 있는 예시
+        // 입력한 값에 3을 더해 콘솔에 출력하는 함수
+
+        // 한수 선언시 괄호 안에 들어가는 것이 '매개변수'
+        // 함수를 사용할 때 어떤 값을 외부로부터 받아 올것인지 미리 정해놓는 곳
+        // 설명서와 비슷한 느낌으로 생각해도 무방
+        function add3AndExportConsole(number){
+            // let number = 10 과 같다
+            console.log(number+3)
+        }
+
+        add3AndExportConsole(10)
+
+        // console.log('출력값')
+        // alert('메세지')
+
+        function 출생년도계산기(나이){
+            const date = new Date();
+            const 현재년도 = date.getFullyear();
+
+            return 현재년도 - 나이 + 1;
+        }
+
+        const 출생년도 = 출생년도계산기(26);
+
+        console.log(출생년도)
+    </script>
+</body>
+</html>
