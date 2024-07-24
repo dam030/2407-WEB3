@@ -7,11 +7,58 @@
 </head>
 <body>
     <script>
-
-
         function star(){
-            document.write('&nbsp;*$nbsp;')
+            document.write('&nbsp;ㅁ&nbsp;')
         }
+        function enter(){
+            document.write('<br>')
+        }
+        function space(){
+            document.write('&nbsp;&nbsp;&nbsp;')
+        }
+
+
+        for(let j = 0 ; j < 5 ; j++) {
+            for(let i = 0 ; i <= j ; i ++) {
+                star();
+            }
+            enter();
+        }
+
+        enter();
+
+        for(let j = 0 ; j < 5 ; j++) {
+            for(let i = 0 ; i < 5-j ; i ++) {
+                star();
+            }
+            enter();
+        }
+
+        enter();
+
+        for(let j = 0 ; j < 5 ; j++) {
+            for(let i = 0 ; i < j ; i ++) {
+                space();
+            }
+            for(let i = 0 ; i < 5-j ; i ++) {
+                star();
+            }
+            enter();
+        }
+
+        enter();
+
+
+        for(let i = 0 ; i < 5 ; i ++) {
+            for(let j = 0 ; j < 4-i; j ++) {
+                space();
+            }
+            for(let j = 0 ; j < i + 1 ; j ++) {
+                star();
+            }
+            document.write('(엔터)')
+        }
+
 
         // 함수는 매개변수와 리턴을 선택적으로 사용할수있다
         // 매개변수가 있는 예시
