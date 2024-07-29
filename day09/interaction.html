@@ -22,15 +22,15 @@
     <button class="switch">스위치</button>
 
     <script>
-        const myBox = document.getElementsByClassName('box')
-        console.log(myBox)
+        const Box = document.getElementsByClassName('box')
+        console.log(Box)
 
         const button = document.querySelector('.switch')
         console.log(button)
         
-        button.addEventListener('click', () => {
-            myBox[0].classList.toggle('active')
-        })
+        // button.addEventListener('click', () => {
+        //     Box[0].classList.add('active')
+        // })
 
         // box[0].classlist.constains('active') box[0]에 active라는 클래스를 가졌는지
         // 가졌으면 true 안 가졌으면 false
@@ -38,6 +38,22 @@
 
         // if문과 위의 contains를 이용해 스위치를 누를 때 마다 켜졌다 꺼졌다 반복되는
         // 인터렉션을 만들어봅시다
+
+        // +추가 : classList.remove('클래스이름') 을 이용해 클래스를 제거할 수 있습니다
+
+        button.addEventListener('click', () => {
+            // active가 들어있을 때 클릭했다면
+            if(Box[0].classList.constains('active')){
+                Box[0].classList.remove('active')
+            }else {
+                Box[0].classList.add('active')
+            }
+        })
+
+        // button.addEventListener('click', () => {
+        //     Box[0].classList.toggle('active')
+        // })
+        // 랑 같은 효과
     </script>
 </body>
 </html>
