@@ -47,15 +47,17 @@
 
 
         const colorBox = document.getElementsByClassName('color-box');
-
-        for(let i = 0; i < colorBox.length; i++) {
-            const rect = colorBox[i].querySelector('.rect');
+        
+        for(let i = 0 ; i < colorBox.length ; i ++) {
+            const rect = colorBox[i].getElementsByClassName('rect');
             const range = colorBox[i].querySelector('input');
             
-            range.addEventListener('change', () =>
-            rect.style.backgroundColor = `hsl(0, 0%, ${100-range.value}%)`
-        )}
+            range.addEventListener('change',() => {
+                // range.value가 100일때 0 0일때 100
 
+                rect[0].style.backgroundColor = `hsl(0, 0%, ${100 - range.value}%)`
+            })
+        }
         // 개체의 스타일을 지정하는 방법: 개체.style.속성이름 = '문자열의 속성지정'
         // rect.addEventListener('click',() => {
         //     rect.style.backgroundColor = 'red'

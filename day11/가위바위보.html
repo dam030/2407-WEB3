@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가위바위보</title>
+</head>
+<body>
+    <script>
+        // const 정답 = parseInt(Math.random()*2)+1;
+        // const 답변 = prompt('선택해주세요')
+
+        
+        // for(let i = 0; i <= 2; i++){
+        //     let 가위 = 0
+        //     let 바위 = 1
+        //     let 보 = 2
+        //     if(가위 > 보 || 바위 > 가위 || 보 > 바위) {
+        //         alert(`축하합니다 당신이 이겼습니다`)
+        //     }else if(가위 < 바위 || 바위 < 가위 || 보 <가위) {
+        //         alert(`당신이 졌습니다. 바보!`)
+        //     }else {
+        //         alert(`무승부입니다. 다시 선택하세요!`)
+        //     }
+
+        // }
+        // 이겼을 때
+        // 졌을 때
+        // 무승부일 때
+        alert(`가위바위보 게임`);
+        parseInt(prompt(`선택해주세요`,`0 : 가위 1: 바위 2: 보`));
+
+        let 가위 = 0
+        let 바위 = 1
+        let 보 = 2
+
+        for(let i = 0; i < 5; i++){
+            const 정답 = parseInt(Math.random()*3)+0;
+            alert(정답)
+            const 답변 = parseInt(prompt('선택해주세요'))
+            if(정답 === 답변){
+                alert(`무승부입니다`)
+            }else if(가위 > 보 || 바위 > 가위 || 보 > 바위){
+                alert(`당신은 졌습니다. 다시 시도해주세요`)
+            }else if(가위 < 바위 || 바위 < 보 || 보 < 가위){
+                alert(`당신은 이겼습니다. 축하합니다`)
+            }else {
+                alert(`다시 입력해주세요.`)
+            }
+        }
+    </script>
+</body>
+</html>
