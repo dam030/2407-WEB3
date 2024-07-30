@@ -4,24 +4,111 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>가위바위보</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .container {
+            width: 600px;
+            height: 500px;
+            border: 1px solid #222;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .board {
+            width: 120px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background-color: #aaa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .board:active {
+            background-color: #555;
+        }
+
+        .board-container {
+            display: flex;
+            gap: 24px;
+        }
+    </style>
 </head>
 <body>
+    <h1>가위바위보</h1>
+    <div class="container">
+        <h2 class="winning-streak">시작!</h2>
+        <div class="com">
+            <h3>컴퓨터</h3>
+            <div class="board"></div>
+        </div>
+        <div class="user">
+            <h3>유저</h3>
+            <div class="board-container">
+                <div class="board">가위</div>
+                <div class="board">바위</div>
+                <div class="board">보</div>
+            </div>
+        </div>
     <script>
+        const winningStreak = document.querySelector('.winning-streak')
+        const comBoard = document.querySelector('.com > .board')
+        const boardContainer = document.querySelector('.board-container')
+        
+        const table = ['가위', '바위', '보']
+        
+        for(let i = 0; i <= boardContainer.childElementCount; i++){
+            boardContainer.children[i].addEventListener('click', () => {
+                const computer = parseInt(Math.random()*3);
+                const user = i;
+                
+                comBoard.innerText = table[computer]
+                // if(computer === 0){
+                //     comBoard.innerText = '가위'
+                // }else if(computer === 1){
+                //     comBoard.innerText = '바위'
+                // }else {
+                //     comBoard.innerText = '보'
+                // }
+    
+                if(computer === user) {
+                    winningStreak.innerText = '무승부'
+                    winningStreak.style.color = '#222'
+                }else if(user === 0 && computer === 2 || user === 1 && computer === 0 || user === 2 && computer === 1){
+                    연승스택++;
+                    winningStreak.innerText = '승리'
+                    winningStreak.style.color = 'blue'
+                }else {
+                    연승스택 = 0;
+                    winningStreak.innerText = '패배'
+                    winningStreak.style.color = 'red'
+                }
 
-        // let 가위 = 0
-        // let 바위 = 1
-        // let 보 = 2
-
-        const computer = parseInt(Math.random()*3);
-        const user = parseInt(prompt('가위바위보게임',`0 : 가위 1: 바위 2: 보`))
-        if(computer === user) {
-            alert(`무승부입니다`)
-        }else if(user === 0 && computer === 2 || user === 1 && computer === 0 || user === 2 && computer === 1){
-            alert(`당신은 이겼습니다.`)
-        }else {
-            alert(`당신은 졌습니다.`)
+                if(연승스택 === 3) {
+                    winningStreak.innerText = '게임클리어!'
+                }else {
+                    // winningStreak.innerText = winningStreak.innerText + `, ${연승스택}연승`
+                    winningStreak.innerText += `, ${연승스택}연승`
+                }
+            })
         }
-        console.log(computer,user)
+
+        
+        // const user = parseInt(prompt('가위바위보게임',`0 : 가위 1: 바위 2: 보`))
+        // if(computer === user) {
+        //     alert(`무승부입니다`)
+        // }else if(user === 0 && computer === 2 || user === 1 && computer === 0 || user === 2 && computer === 1){
+        //     alert(`당신은 이겼습니다.`)
+        // }else {
+        //     alert(`당신은 졌습니다.`)
+        // }
+        // console.log(computer,user)
     </script>
 </body>
 </html>
