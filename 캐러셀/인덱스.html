@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>캐러셀 원리</title>
+    <title>캐러셀 인덱스</title>
     <style>
         * {
             margin: 0;
@@ -52,23 +52,31 @@
         const contentWrapper = document.querySelector('.content-wrapper')
         const next = document.querySelector('.next')
         const prev = document.querySelector('.prev')
+        const sliderWidth = contentWrapper.children[0].clientWidth
 
-        let 좌표 = 0;
+        let index = 0;
 
         next.addEventListener('click', () => {
-            좌표 -= 300;
-            if(좌표 < -600) {
-                좌표 = -600;
+            index++;
+            if(index > contentWrapper.childElementCount-1) {
+                index = contentWrapper.childElementCount-1;
             }
-            contentWrapper.style.transform = `translateX(${좌표}px)`
+            // contentWrapper.style.transform = `translateX(${index * -300}px)`
+            applyIndexToSlider()
         })
         prev.addEventListener('click', () => {
-            좌표 += 300;
-            if(좌표 > 0) {
-                좌표 = 0;
+            index--;
+
+            if(index < 0) {
+                index = 0
             }
-            contentWrapper.style.transform = `translateX(${좌표}px)`
+            
+            // contentWrapper.style.transform = `translateX(${index * -300}px)`
+            applyIndexToSlider()
         })
+        function applyIndexToSlider(){
+            contentWrapper.style.transform = `translateX(${index * -300}px)`
+        }
     </script>
 </body>
 </html>
