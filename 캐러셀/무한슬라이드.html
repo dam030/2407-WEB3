@@ -11,7 +11,7 @@
         }
 
         .slider {
-            width: 300px;
+            width: 500px;
             height: 200px;
             overflow: hidden;
         }
@@ -69,7 +69,7 @@
 
         contentWrapper.style.gap = `${gap}px`
 
-        for(let i = 0 ; i < slideCount ; i ++) {
+        for(let i = 0 ; i < contentWrapper.childElementCount ; i ++) {
             contentWrapper.children[i].style.width = `${contentWidth}px`
         }
 
@@ -82,15 +82,32 @@
         })
         nextButton.addEventListener('click',()=>{
             index++;
-            if(index > contentWrapper.childElementCount-viewCount) {
-                index = 0 ;
-            }
             applyIndexToSlider()
+            // 일단 재생하고
+            // 만약 마지막 슬라이드(복사본)에 도달했다면
+            if(???) {
+                // transtion 지속시간만큼 시간이 흐른 뒤에
+                // transtion 0으로 만들고, 좌표를 첫번째 슬라이드로 바꿔치기 한다
+                setTimeout(() => {
+                    ???
+                }, timeout);
+            }
         })
 
-        function applyIndexToSlider(){
+        function applyIndexToSlider(anomation){
+            if(anomation) {
+                contentWrapper.style.transition = 0.5;
+            }else {
+                contentWrapper.style.transition = 0;
+            }
             contentWrapper.style.transform = `translateX(${index * -(contentWidth + gap)}px)`
         }
+
+
+        const cloneFirst = contentWrapper.children[0].cloneNode(true);
+        const cloneLast = contentWrapper.children[7].cloneNode(true);
+        contentWrapper.appendChild(cloneFirst);
+        contentWrapper.insertBefore(cloneLast, contentWrapper.children[0])
     </script>
 </body>
 </html>
