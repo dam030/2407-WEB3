@@ -55,7 +55,7 @@
     </div>
 
     <script>
-        const viewCount = 1;
+        const viewCount = 2;
         const gap = 0;
         const slider = document.querySelector('.slider')
         const contentWrapper = document.querySelector('.content-wrapper');
@@ -74,73 +74,74 @@
         // 복사하는 부분과 끼워넣는 부분을 별도로 분리해서 (for 2개 이상 쓰라는 이야기)
         // 복사본을 적절한 위치에 잘 넣어보도록 합시다. 
         
-        const cloneFirst = contentWrapper.firstElementChild.cloneNode(true);
-        const cloneLast = contentWrapper.lastElementChild.cloneNode(true);
         for(let i = 0; i < 2; i++){
-            contentWrapper.insertBefore(cloneLast, contentWrapper.firstElementChild);
+            const cloneFirst = contentWrapper.firstElementChild.cloneNode(true);
+            const cloneLast = contentWrapper.lastElementChild.cloneNode(true);
             contentWrapper.appendChild(cloneFirst);
+            contentWrapper.insertBefore(cloneLast, contentWrapper.firstElementChild);
         }
         
 
 
-        // let index = viewCount ;
-        // let playAble = true
+        let index = viewCount ;
+        let playAble = true
         
-        // applyIndexToSlider(false);
+        applyIndexToSlider(false);
 
         // 우리가 변수에 좌표 이동하는 함수를 넣어줬기 때문에 적용해줘야 좌표가 이동함
         // false로 하는 이유는 transition을 주지 않기 위해서
 
-        // contentWrapper.style.gap = `${gap}px`
+        contentWrapper.style.gap = `${gap}px`
 
-        // for(let i = 0 ; i < contentWrapper.childElementCount ; i ++) {
-        //     contentWrapper.children[i].style.width = `${contentWidth}px`
-        // }
+        for(let i = 0 ; i < contentWrapper.childElementCount ; i ++) {
+            contentWrapper.children[i].style.width = `${contentWidth}px`
+        }
 
-        // prevButton.addEventListener('click',()=>{
-        //     if(playAble){
-        //         playAble=false;
+        prevButton.addEventListener('click',()=>{
+            if(playAble){
+                playAble=false;
                 
-        //         index--;
-        //         applyIndexToSlider(true)
+                index--;
+                applyIndexToSlider(true)
 
-        //         setTimeout(() => {
-        //             playAble = true;
+                setTimeout(() => {
+                    playAble = true;
 
-        //             if(index === viewCount - 1) {
-        //                 index = contentWrapper.childElementCount-viewCount-1
-        //                 applyIndexToSlider(false)
-        //             }
-        //         }, transitionTime);
-        //     }
-        // })
-        // nextButton.addEventListener('click',()=>{
-        //     if(playAble){
-        //         playAble=false;
+                    if(index === viewCount - 2) {
+                        index = contentWrapper.childElementCount-viewCount
+                        applyIndexToSlider(false)
+                    }
+                }, transitionTime);
+            }
+        })
+        nextButton.addEventListener('click',()=>{
+            if(playAble){
+                playAble=false;
 
-        //         index++;
-        //         applyIndexToSlider(true)
+                index++;
+                applyIndexToSlider(true)
                 
-        //         setTimeout(() => {
-        //             playAble=true;
+                setTimeout(() => {
+                    playAble=true;
 
-        //             if(index === contentWrapper.childElementCount-viewCount) {
-        //                 index = viewCount
-        //                 applyIndexToSlider(false) 
-        //             }
-        //         }, transitionTime);
+                    if(index === contentWrapper.childElementCount - viewCount - 1) {
+                        index = viewCount - 1
+                        applyIndexToSlider(false) 
+                    }
+                }, transitionTime);
+                console.log(index);
 
-        //     }
-        // })
+            }
+        })
 
-        // function applyIndexToSlider(anomation){
-        //     if(anomation) {
-        //         contentWrapper.style.transition = `${transitionTime}ms`;
-        //     }else {
-        //         contentWrapper.style.transition = `none`;
-        //     }
-        //     contentWrapper.style.transform = `translateX(${index * -(contentWidth + gap)}px)`
-        // }
+        function applyIndexToSlider(anomation){
+            if(anomation) {
+                contentWrapper.style.transition = `${transitionTime}ms`;
+            }else {
+                contentWrapper.style.transition = `none`;
+            }
+            contentWrapper.style.transform = `translateX(${index * -(contentWidth + gap)}px)`
+        }
     </script>
 </body>
 </html>
