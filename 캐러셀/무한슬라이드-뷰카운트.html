@@ -61,6 +61,7 @@
             height: 12px;
             border-radius: 50%;
             background-color: gray;
+            cursor: pointer;
         }
 
         .radio-button.active {
@@ -126,9 +127,13 @@
         // 복사본을 적절한 위치에 잘 넣어보도록 합시다. 
         
         for(let i = 0; i < slideCount; i++){
-            const Button = document.createElement('div')
-            Button.classList.add('radio-button')
-            radioButtonContainer.appendChild(Button)
+            const button = document.createElement('div')
+            button.classList.add('radio-button')
+            button.addEventListener('click', ()=>{
+                index = viewCount + i;
+                applyIndexToSlider(true)
+            })
+            radioButtonContainer.appendChild(button);
         }
 
         radioButtonContainer.children[0].classList.add('active')
@@ -205,11 +210,18 @@
             }
             contentWrapper.style.transform = `translateX(${index * -(contentWidth + gap)}px)`
 
-            // resetButtons();
+            resetButtons();
+            if(viewCount-1 === index){
+                radioButtonContainer.lastElementChild.classList.add('active');
+            }else if(slideCount + viewCount === index) {
+                radioButtonContainer.firstElementChild.classList.add('active');
+            }else {
+                radioButtonContainer.children[index-viewCount].classList.add('active');
+            }
         }
 
         function resetButtons() {
-            for(let = i; i < radioButtonContainer.childElementCount; i++) {
+            for(let i = 0; i < radioButtonContainer.childElementCount; i++) {
                 radioButtonContainer.children[i].classList.remove('active')
             }
         }

@@ -84,14 +84,14 @@
 </head>
 <body>
     <div class="slider-container">
-                <div class="content">1(처음)</div>
-                <div class="content">2</div>
-                <div class="content">3</div>
-                <div class="content">4</div>
-                <div class="content">5</div>
-                <div class="content">6</div>
-                <div class="content">7</div>
-                <div class="content">8(끝)</div>
+        <div class="content">1(처음)</div>
+        <div class="content">2</div>
+        <div class="content">3</div>
+        <div class="content">4</div>
+        <div class="content">5</div>
+        <div class="content">6</div>
+        <div class="content">7</div>
+        <div class="content">8(끝)</div>
     </div>
     <script>
         const sliderContainer = document.querySelector('.slider-container')
@@ -105,6 +105,14 @@
         while(sliderContainer.childElementCount !== 0){
             contentsWrapper.appendChild(sliderContainer.firstElementChild)
         }
+        // 위에랑 같은 뜻
+        // const arr = []
+        // for(let i = 0; i < sliderContainer.childElementCount; i++) {
+        //     arr.push(sliderContainer[i])
+        // }
+        // for(let i = 0; i < arr.length; i++) {
+        //     contentsWrapper.appendChild(arr[i])
+        // }
 
         sliderContainer.appendChild(slider)
         slider.appendChild(contentsWrapper)
